@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ProfileImage from "../components/mypage/ProfileImage";
 import BadgeList from "../components/mypage/BadgeList";
+import { Helmet } from "react-helmet-async";
 
 import FavoriteList from "../components/mypage/FavoriteList";
 // import ReviewList from "../components/mypage/ReviewList";
@@ -26,6 +27,25 @@ const MypageContainer = styled.div`
   background-color: var(--dark-gray);
   position: relative;
   padding: 0.8rem;
+`;
+
+const MyReviewList = styled.div`
+  border: 2px solid #000;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff;
+  padding: 15px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: black;
+  font-weight: bold;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  &:hover {
+    background-color: #f84b99;
+  }
 `;
 
 const MypageContent = styled.div`
@@ -195,6 +215,10 @@ const MyPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>마이페이지 | Cookie-V2.00</title>
+        <meta name="description" content="쿠키 서비스의 마이페이지입니다." />
+      </Helmet>
       <LoginModal />
       {isLoading && <Spinner />}
       {showLogoutModal && (
@@ -255,22 +279,3 @@ const MyPage = () => {
 };
 
 export default MyPage;
-
-const MyReviewList = styled.div`
-  border: 2px solid #000;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: #ffffff;
-  padding: 15px 20px;
-  cursor: pointer;
-  font-size: 1rem;
-  color: black;
-  font-weight: bold;
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-
-  &:hover {
-    background-color: #f84b99;
-  }
-`;
