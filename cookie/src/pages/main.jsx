@@ -13,6 +13,7 @@ import useAuthStore from "../stores/useAuthStore";
 import Question from "../components/main/Question";
 import Footer from "../components/main/Footer";
 import Popup from "../components/common/Popup";
+import { Helmet } from "react-helmet-async";
 
 const Main = () => {
   const [showTopButton, setShowTopButton] = useState(false);
@@ -35,6 +36,10 @@ const Main = () => {
 
   return (
     <>
+      <Helmet>
+        <title>홈 | Cookie-V2.00</title>
+        <meta name="description" content="쿠키 서비스의 홈입니다." />
+      </Helmet>
       <MainContainer>
         <Popup />
         <Content>
@@ -48,8 +53,7 @@ const Main = () => {
         </Content>
         <LoginModal />
         <WriteReviewButton onClick={() => isLogined("/searchmov")}>
-          {/* <FaPencilAlt className="icon" /> */}
-          <img src={Pencil} className="icon" />
+          <img src={Pencil} className="icon" alt="리뷰 작성 아이콘" />
         </WriteReviewButton>
         <TopButton visible={showTopButton} onClick={scrollToTop} />
       </MainContainer>

@@ -326,7 +326,7 @@ const GenreBtn = styled.button`
   border: none;
   cursor: pointer;
   margin: 0 0.4rem 0.3rem 0;
-  padding: 0 0 0 0.375rem;
+  padding: 0 1rem 1rem 1rem;
   font-size: 1rem;
   color: ${(props) => (props.$isSelected ? "#FF92BC" : "#afafaf")};
   font-weight: ${(props) => (props.$isSelected ? "bold" : "normal")};
