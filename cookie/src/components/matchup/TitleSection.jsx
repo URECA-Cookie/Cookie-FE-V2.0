@@ -34,7 +34,7 @@ const TitleImage = styled.img`
 `;
 
 const Title = styled.h1`
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: #ffffff;
   text-align: center;
@@ -60,7 +60,7 @@ const InfoContainer = styled.div`
 `;
 
 const DDay = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: bold;
   color: #ffffff;
   text-align: center;

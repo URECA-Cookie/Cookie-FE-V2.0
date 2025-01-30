@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axiosInstance from "../api/auth/axiosInstance";
 import useAuthStore from "../stores/useAuthStore";
 import LoginModal from "../components/common/LoginModal";
+import { Helmet } from "react-helmet-async";
 
 const Container = styled.div`
   padding: 2rem;
@@ -201,6 +202,13 @@ const BadgeHistory = () => {
   return (
     <Container>
       <BackButton onClick={handleBackClick} />
+      <Helmet>
+        <title>뱃지 포인트 내역 | Cookie-V2.00</title>
+        <meta
+          name="description"
+          content="쿠키 서비스의 뱃지 포인트 내역페이지입니다."
+        />
+      </Helmet>
       <Title>뱃지 포인트 내역</Title>
       {badgeHistory.length > 0 ? (
         <HistoryTable>

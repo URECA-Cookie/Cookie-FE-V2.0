@@ -8,6 +8,7 @@ import SearchResults from "../components/searchpage/SearchResults";
 import TopButton from "../components/searchpage/TopButton";
 import serverBaseUrl from "../config/apiConfig";
 import GlobalStyle from "../styles/global";
+import { Helmet } from "react-helmet-async";
 
 const Container = styled.div`
   flex: 1;
@@ -252,6 +253,10 @@ const Search = () => {
   return (
     <Container>
       <GlobalStyle />
+      <Helmet>
+        <title>검색페이지 | Cookie-V2.00</title>
+        <meta name="description" content="쿠키 서비스의 검색페이지입니다." />
+      </Helmet>
       <SearchInfoText>
         영화 제목, 배우/ 감독명을
         <br />

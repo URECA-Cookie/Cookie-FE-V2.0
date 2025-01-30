@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../api/auth/axiosInstance";
+import { Helmet } from "react-helmet-async";
 // import { symbol } from "prop-types";
 
 const ReviewFeedWrapper = styled.div`
@@ -301,7 +302,7 @@ const ReviewFeed = () => {
   const navigate = useNavigate();
   const [reviews, setReviews] = useState([]);
   const [showSpoilerOnly, setShowSpoilerOnly] = useState(false);
-  const [page, setPage] = useState(0); // 현재 페이지
+  const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true); // 추가 로딩 가능 여부
   const [isLoading, setIsLoading] = useState(false); // 로딩 상태
   const [initialLoad, setInitialLoad] = useState(true); // 초기 로딩 여부
@@ -397,17 +398,20 @@ const ReviewFeed = () => {
     };
   }, [handleScroll]);
 
-  // 필터링 핸들러
   const filterReviews = (showSpoilers) => {
-    setShowSpoilerOnly(showSpoilers); // 스포일러 필터 설정
-    setPage(0); // 페이지 초기화
-    setReviews([]); // 기존 데이터 초기화
-    setHasMore(true); // 추가 로딩 가능
-    setInitialLoad(true); // 초기 로드 트리거
+    setShowSpoilerOnly(showSpoilers);
+    setPage(0);
+    setReviews([]);
+    setHasMore(true);
+    setInitialLoad(true);
   };
 
   return (
     <ReviewFeedWrapper>
+      <Helmet>
+        <title>리뷰페이지 | Cookie-V2.00</title>
+        <meta name="description" content="쿠키 서비스의 리뷰페이지입니다." />
+      </Helmet>
       <SearchInfoText>
         영화 리뷰
         <br />

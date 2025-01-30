@@ -5,10 +5,10 @@ import { toast } from "react-hot-toast";
 import axiosInstance from "../api/auth/axiosInstance";
 import DetailHeader from "../components/searchpage/ReviewDetailHeader";
 import ReviewContentSection from "../components/searchpage/ReviewContentSection";
-import ReviewTextSection from "../components/searchpage/ReviewTextSection";
+
 import { FaPaperPlane } from "react-icons/fa";
 import useAuthStore from "../stores/useAuthStore";
-import { jwtDecode } from "jwt-decode";
+
 import Spinner from "../components/common/Spinner";
 import useUserStore from "../stores/useUserStore";
 

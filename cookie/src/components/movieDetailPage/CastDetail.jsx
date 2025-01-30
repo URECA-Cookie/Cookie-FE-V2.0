@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import serverBaseUrl from "../../config/apiConfig";
+import { Helmet } from "react-helmet-async";
 
 const CastInfo = styled.div`
   padding: 1.25rem;
@@ -370,6 +371,17 @@ function CastDetail() {
   return (
     <>
       <CastInfo>
+        <Helmet>
+          <title>
+            {data.name
+              ? `${data.name} | Cookie-V2.00`
+              : "출연진 상세 | Cookie-V2.00"}
+          </title>
+          <meta
+            name="description"
+            content={`${data.name ? `${data.name}의 필모그래피와 정보` : "출연진 정보 페이지"}`}
+          />
+        </Helmet>
         <HeaderContainer>
           <PrevIcon onClick={() => handleNavigate(-1)}></PrevIcon>
           <span className="title">{data.name}</span>

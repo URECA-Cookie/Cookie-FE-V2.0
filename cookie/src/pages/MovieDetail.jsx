@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../api/auth/axiosInstance";
 import Spinner from "../components/common/Spinner";
 import MovieDetailHeader from "../components/searchpage/MovieDetailHeader";
+import { Helmet } from "react-helmet-async";
 
 const ContentWrapper = styled.div`
   width: 100%;
@@ -78,6 +79,13 @@ const MovieDetail = () => {
 
   return (
     <ContentWrapper>
+      <Helmet>
+        <title>{movieData.title} | Cookie-V2.00</title>
+        <meta
+          name="description"
+          content="쿠키 서비스의 영화 상세보기 페이지입니다."
+        />
+      </Helmet>
       <MovieDetailHeader onBack={() => navigate(-1)} title={movieData.title} />
       {movieData.images && movieData.images.length > 0 && (
         <HeaderSection

@@ -10,8 +10,8 @@ const Logo = styled.div`
   cursor: pointer;
 
   img {
-    width: 150px;
-    height: 120px;
+    width: 125px;
+    height: 100px;
     object-fit: cover;
   }
 `;
@@ -52,13 +52,9 @@ const Header = () => {
   const userInfo = useUserStore((state) => state.getUserInfo());
 
   const isDarkGrayHeader =
-    [
-      "/mypage",
-      "/point-history",
-      "/notifications",
-      "/manageprofile",
-    ].includes(location.pathname) ||
-    location.pathname.match(/^\/reviews\/\d+$/);
+    ["/mypage", "/point-history", "/notifications", "/manageprofile"].includes(
+      location.pathname
+    ) || location.pathname.match(/^\/reviews\/\d+$/);
 
   const handleLogoClick = () => navigate("/");
   const handleNotificationClick = () => navigate("/notifications");
@@ -67,7 +63,14 @@ const Header = () => {
   return (
     <HeaderContainer isDarkGray={isDarkGrayHeader}>
       <Logo onClick={handleLogoClick}>
-        <img src={CookieLogo} alt="로고 이미지" />
+        <img
+          src="/assets/images/cookie-logo.webp"
+          alt="로고 이미지"
+          width="100"
+          height="80"
+          loading="eager"
+          fetchPriority="high"
+        />
       </Logo>
       <div className="header-right">
         {userInfo.nickname ? (

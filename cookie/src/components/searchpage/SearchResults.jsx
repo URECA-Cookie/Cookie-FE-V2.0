@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
 const skeletonLoading = keyframes`
@@ -12,7 +13,10 @@ const skeletonLoading = keyframes`
 
 const ResultsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* 고정된 최소 너비 설정 */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(150px, 1fr)
+  ); /* 고정된 최소 너비 설정 */
   gap: 15px;
   width: 100%;
   max-width: 1200px; /* 부모 너비 제한 */
@@ -99,12 +103,12 @@ const SearchResults = ({
   hasMore,
   fetchMoreResults,
 }) => {
-  // 로딩 중일 때 "로딩 중..." 메시지 표시
-  if (isLoading) {
-    return <Message>로딩 중...</Message>;
-  }
+  useEffect(() => {
+    if (hasMore && !isLoading) {
+      fetchMoreResults();
+    }
+  }, [hasMore, isLoading]);
 
-  // 검색 결과가 없을 때 "검색 결과가 없습니다." 메시지 표시
   if (!isLoading && searchTerm.trim() && results.length === 0) {
     return <Message>검색 결과가 없습니다.</Message>;
   }
@@ -113,17 +117,20 @@ const SearchResults = ({
 
   return (
     <div>
+      {isLoading && <Message>로딩 중...</Message>}
       <ResultsContainer>
         {displayResults.map((result) => (
           <ResultItem
             key={result.id || result.movieId}
             onClick={() => onMovieClick(result.id || result.movieId)}
           >
-            <PosterSkeleton isLoading={isLoading} />
             <Poster
-              src={result.poster || result.profileImage}
-              alt={result.title || result.name}
-              isLoading={isLoading}
+              src={
+                result.poster ||
+                result.profileImage ||
+                "/assets/images/default.png"
+              }
+              alt={result.title || result.name || "기본 이미지"}
             />
           </ResultItem>
         ))}
