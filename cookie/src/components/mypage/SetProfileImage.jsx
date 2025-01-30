@@ -179,6 +179,10 @@ const SetProfileImage = ({ profileImage, onChange }) => {
             profileImage?.preview || "/assets/images/mypage/setdefaultImage.svg"
           }
           alt="Profile"
+          width="120"
+          height="120"
+          loading="lazy"
+          fetchPriority="high"
         />
         <CameraIcon src="/assets/images/camera.svg" alt="Camera Icon" />
       </ImageWrapper>

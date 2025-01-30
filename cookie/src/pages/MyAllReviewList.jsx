@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import axiosInstance from "../api/auth/axiosInstance";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const ReviewSection = styled.div`
   width: 100%;
@@ -382,6 +383,13 @@ const MyAllReviewList = () => {
 
   return (
     <ReviewSection>
+      <Helmet>
+        <title>내가 작성한 리뷰 | Cookie-V2.00</title>
+        <meta
+          name="description"
+          content="쿠키 서비스의 내가 작성한 리뷰 페이지입니다."
+        />
+      </Helmet>
       <HeaderContainer>
         <PrevIcon onClick={handleBack} />
         <span className="title">내가 작성한 리뷰</span>

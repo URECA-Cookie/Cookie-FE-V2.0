@@ -15,6 +15,7 @@ import SnowEffect from "../components/common/SnowEffect";
 import Spinner from "../components/common/Spinner";
 import axiosInstance from "../api/auth/axiosInstance";
 import serverBaseUrl from "../config/apiConfig";
+import { Helmet } from "react-helmet-async";
 
 const Container = styled.div`
   display: flex;
@@ -70,7 +71,7 @@ const MatchupPage = () => {
       debug: (str) => console.log("디버깅:", str),
       onConnect: () => {
         console.log("STOMP 연결 성공");
-        setStompClient(client); // 연결 성공 후 클라이언트 설정
+        setStompClient(client);
         setIsConnected(true);
       },
       onStompError: (frame) => {
@@ -82,9 +83,9 @@ const MatchupPage = () => {
       },
     });
 
-    client.activate(); // STOMP 활성화
+    client.activate();
 
-    return () => client.deactivate(); // 컴포넌트 언마운트 시 연결 해제
+    return () => client.deactivate();
   }, []);
 
   const handleVoteEnd = () => setIsVoteEnded(true);
@@ -99,6 +100,10 @@ const MatchupPage = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>매치업페이지 | Cookie-V2.00</title>
+        <meta name="description" content="쿠키 서비스의 매치업페이지입니다." />
+      </Helmet>
       <SnowEffect />
       <ScrollToTop />
       <TitleSection

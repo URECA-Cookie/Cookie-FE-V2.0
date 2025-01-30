@@ -69,8 +69,8 @@ const SlidingIconContainer = styled.div`
 `;
 
 const SlidingIcon = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   animation: ${slideAnimation} 1.5s infinite ease-in-out;
   cursor: pointer;
 `;

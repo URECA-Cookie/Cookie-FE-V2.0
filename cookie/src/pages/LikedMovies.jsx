@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axiosInstance from "../api/auth/axiosInstance";
+import { Helmet } from "react-helmet-async";
 
 const Container = styled.div`
   padding: 1rem;
@@ -178,6 +179,13 @@ const LikedMovies = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>내가 좋아한 영화 | Cookie-V2.00</title>
+        <meta
+          name="description"
+          content="쿠키 서비스의 내가좋아한 영화페이지입니다."
+        />
+      </Helmet>
       <HeaderContainer>
         <PrevIcon onClick={onBack}></PrevIcon>
         <span className="title">내가 좋아한 영화</span>

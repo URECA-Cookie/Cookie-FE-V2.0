@@ -1,10 +1,10 @@
 import GlobalStyle from "../styles/global";
-import CookieImg from "../assets/images/login/cookie_img.svg";
-import CookieLogo from "../assets/images/login/cookie_lg.svg";
+
 import styled from "styled-components";
 import { OAuth_LOGIN_PROVIDER } from "../config/OAuthConfig";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../stores/useAuthStore";
+import { Helmet } from "react-helmet-async";
 
 export const LoginContainer = styled.div`
   /* background-color: #fdf8fa; */
@@ -17,7 +17,6 @@ export const LoginContainer = styled.div`
 
   .regular {
     margin-bottom: 0.2rem;
-    
   }
 
   .bold {
@@ -28,7 +27,6 @@ export const LoginContainer = styled.div`
   .login__img {
     margin: 0.5rem 0;
     width: 400px;
-
   }
 
   @media (max-width: 768px) {
@@ -96,7 +94,6 @@ const GuestLink = styled.div`
   }
 `;
 
-
 const DividerText = styled.p`
   display: flex;
   align-items: center;
@@ -131,11 +128,18 @@ function Login() {
   return (
     <>
       <GlobalStyle />
+      <Helmet>
+        <title>로그인 | Cookie-V2.00</title>
+        <meta name="description" content="쿠키 서비스의 로그인페이지입니다." />
+      </Helmet>
       <LoginContainer>
-        
         <p className="regular">영화 리뷰 커뮤니티 1등 앱</p>
         <h2 className="bold">쿠키에서 여운 즐기기</h2>
-        <img className="login__img" src="/assets/images/cookie-logo.png" alt="logoImg" />
+        <img
+          className="login__img"
+          src="/assets/images/cookie-logo.png"
+          alt="logoImg"
+        />
         <DividerText>SNS 계정으로 로그인</DividerText>
         <LoginBtn>
           {Object.entries(OAuth_LOGIN_PROVIDER).map(([key, { img, url }]) => (
